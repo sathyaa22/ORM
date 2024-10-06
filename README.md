@@ -6,7 +6,7 @@ To develop a Django application to store and retrieve data from a bank loan data
 
 ## ENTITY RELATIONSHIP DIAGRAM
 
-![diagram](https://github.com/user-attachments/assets/d6e4c799-bed9-4c9a-9045-f3930d6fbc67)
+![Screenshot 2024-10-06 193144](https://github.com/user-attachments/assets/f7c6bf7d-3733-4c31-9e8a-127741ebf321)
 
 
 ## DESIGN STEPS
@@ -25,12 +25,38 @@ Execute Django admin and create details for 10 books
 
 ## PROGRAM
 
+```
+admin.py
+
+from django.contrib import admin
+
+# Register your models here.
+from .models import bankloan,bankloanAdmin
+admin.site.register(bankloan,bankloanAdmin)
+```
+```
+models.py
+
+from django.db import models
+
+# Create your models here.
+from django.contrib import admin
+class bankloan(models.Model):
+    accno=models.IntegerField(primary_key=True);
+    name=models.CharField(max_length=100);
+    loanamt=models.IntegerField();
+    loanlimit=models.IntegerField();
+    phoneno=models.IntegerField();
+
+class bankloanAdmin(admin.ModelAdmin):
+    list_display=('accno','name','loanamt','loanlimit','phoneno')
+```
 
 
 ## OUTPUT
 
-![op 1](https://github.com/user-attachments/assets/680f1ad1-1b61-4a9a-80ed-78ed5a13db29)
+![Screenshot 2024-10-06 193157](https://github.com/user-attachments/assets/1cba6be3-0e23-498f-9d63-e3b4bfde70b7)
 
 
 ## RESULT
-Thus the program for creating a database using ORM hass been executed successfully
+Thus the program for creating a database using ORM hass been executed successfully.
